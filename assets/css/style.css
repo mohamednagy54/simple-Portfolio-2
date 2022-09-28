@@ -1,0 +1,619 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    /*===== Colors =====*/
+    --hue-color: 242;
+
+    /* HSL Color Mode */
+    --skin-color: hsl(342, 92%, 46%);
+    --title-color: hsl(var(--hue-color), 8%, 95%);
+    --text-color: hsl(var(--hue-color), 8%, 85%);
+    --body-color: hsl(var(--hue-color), 19%, 5%);
+    --box-color: hsl(var(--hue-color), 14%, 10%);
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 38%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 26%);
+
+    /*===== Font and Typography =====*/
+    --body-font: 'Poppins', sans-serif;
+
+    /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+    --biggest-font-size: 3rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+
+    /*===== Font Weight =====*/
+    --font-medium: 500;
+    --font-bold: 600;
+
+    /*===== Margenes Bottom =====*/
+    --mb-0-25: .25rem;
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+
+    /*===== Z Index =====*/
+    --z-fixed: 10;
+    --z-modal: 100;
+}
+
+/* Responsive Typography */
+@media screen and (max-width: 1024px) {
+    :root {
+        --biggest-font-size: 2rem;
+        --h1-font-size: 1.5rem;
+        --h2-font-size: 1.25rem;
+        --h3-font-size: 1.125rem;
+        --normal-font-size: .938rem;
+        --small-font-size: .813rem;
+        --smaller-font-size: .75rem;
+    }
+}
+
+/*=============== BASE ===============*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input {
+    font-family: 'poppins', sans-serif;
+    font-size: var(--normal-font-size);
+}
+
+
+body{
+    background-color: var(--body-color);
+    color:var(--text-color);
+}
+
+h1,h2,h3{
+    color: var(--title-color);
+    font-weight: var(--font-bold);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+button{
+    cursor: pointer;
+
+}
+
+button,
+input{
+    border: none;
+    outline: none;
+
+}
+
+
+
+
+
+/*=============== LAYOUT ===============*/
+
+.container{
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid{
+    display: grid;
+
+}
+
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.section{
+    padding: 6.5rem 0 2rem;
+}
+
+.section-title{
+    text-align: center;
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-3);
+}
+
+.section-title::before{
+    content: attr(data-heading);
+    display: block;
+    font-size: var(--normal-font-size);
+    font-weight:var(--font-medium);
+    color: var(--skin-color);
+}
+
+
+/*=============== SIDEBAR ===============*/
+
+.sidebar{
+    position: fixed;
+    background-color: var(--body-color);
+    width: 110px;
+    height: 100vh;
+    border: 1px solid var(--box-color);
+}
+
+
+
+.nav-logo{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
+    text-align: center;
+    margin: auto;
+
+}
+
+.nav-logo-text{
+    color: var(--title-color);
+    font-size: 1.15rem;
+    font-weight: var(--font-bold);
+    line-height: 40px;
+}
+
+
+.nav-menu{
+    position: fixed;
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: left top;
+    width: 100vh;
+
+}
+
+.menu{
+    display: flex;
+    text-align: center;
+
+}
+
+.nav-list{
+    
+    display: flex;
+    flex-direction: row-reverse;
+    margin: -2px auto 0 auto;
+    
+}
+
+.nav-link{
+    float: right;
+    height: 100%;
+    line-height: 100px;
+    padding: 0 1rem;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    position: relative;
+    
+
+    transition: .4s all;
+
+}
+
+
+.btn-share{
+    position: absolute;
+    bottom: 1.8rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.social-share{
+    font-size: 1.5rem;
+}
+
+
+
+
+/* Active Link */
+
+.nav-link.active-link, .nav-link:hover{
+    color: var(--skin-color);
+
+}
+
+.nav-link.active-link::after, .nav-link:hover::after{
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
+    bottom: 1.8rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+
+}
+
+
+/*=============== MAIN ===============*/
+
+.main{
+    margin-left: 110px;
+}
+
+
+
+
+/*===== Home Section =====*/
+
+.home{
+    background: url(../img/home-bg.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+}
+
+.home-container{
+    position: relative;
+    height: 100%;
+    align-items: center;
+
+}
+.home-social{
+    position: absolute;
+    top: 1.8rem;
+    left: 0; 
+    display: flex;
+    column-gap: 3.5rem;
+}
+
+.home-social-follow{
+    font-weight: var(--font-medium);
+    position: relative;
+
+}
+
+.home-social-follow::after{
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--text-color);
+    top: 50%;
+    right: -40%;
+
+
+}
+
+.home-social-links{
+    display: inline-flex;
+    column-gap: 1rem;
+
+}
+
+.home-social-link{
+    color: var(--text-color);
+    font-size: 1.08rem;
+    transition: 0.4s;
+}
+
+.home-social-link:hover{
+    transform: translateY(.25rem);
+}
+
+
+
+
+.home-img{
+    display: none;
+}
+
+.home-title{
+    font-size: var(--biggest-font-size);
+}
+
+.home-subtitle{
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-0-75);
+    
+}
+
+.home-description{
+    font-size: var(--small-font-size);
+    max-width: 450px;
+    margin-bottom: var(--mb-2);
+}
+
+
+.my-info{
+    display: flex;
+    column-gap: 1.8rem;
+    position: absolute;
+    left: 0;
+    bottom: 1.8rem;
+    
+}
+.info-item{
+    display: flex;
+    align-items: center;
+
+}
+
+.info-title,
+.info-subtitle{
+    font-size: var(--small-font-size);
+}
+
+.info-title{
+    font-weight: var(--font-medium);
+}
+
+.info-icon{
+    font-size: 1.8rem;
+    color: var(--skin-color);
+    margin-right: var(--mb-0-75);
+}
+
+
+
+/*===== Buttons =====*/
+
+.button{
+    padding: .75rem 1.4rem;
+    background-color: var(--skin-color);
+    color: var(--title-color);
+    border-radius: .25rem;
+    display: inline-flex;
+    column-gap: .5rem;
+    align-items: center;
+    height: 100%;
+    
+    font-weight: var(--font-medium);
+    position: relative;
+    z-index: 1;
+    
+
+    
+
+}
+
+.button::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #343a40;
+    z-index: -1;
+    transform-origin: center;
+    transform: scale(0);
+    border-radius: .25rem;
+    transition: .3s;
+}
+
+.button:hover::after{
+    transform: scale(1);
+}
+
+.button-icon{
+    font-size: 1.25rem;
+}
+
+
+
+
+
+
+/*===== About Section =====*/
+
+.about-container{
+    grid-template-columns: repeat(2,1fr);
+    column-gap:4rem;
+    align-items: center;
+
+
+    
+}
+
+.about-img{
+    width: 480px;
+    border-radius: 0.75rem;
+    justify-self: center;
+}
+
+
+.about-heading{
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-75);
+}
+
+.about-description{
+    text-align: justify;
+    padding-right: 6rem;
+    margin-bottom: var(--mb-2);
+}
+
+.about-info{
+    grid-template-columns: repeat(3,140px);
+    column-gap: .5rem;
+    margin-bottom: var(--mb-3);
+    
+}
+
+.about-box{
+    text-align: center;
+    border-radius: .25rem;
+    background-color: var(--box-color);
+    padding: 1rem 1.25rem;
+}
+
+.about-icon{
+    color: var(--skin-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--mb-0-75);
+}
+
+.about-title{
+    font-size: var(--small-font-size);
+
+}
+
+.about-subtitle{
+    font-size: var(--smaller-font-size);
+}
+
+
+/*===== Qualification Section =====*/
+
+.qualification-container{
+    grid-template-columns: repeat(2,340px);
+    column-gap: 3rem;
+    justify-content: center;
+}
+
+.qualification-title{
+    font-size: var(--h3-font-size);
+    font-weight:var(--font-medium);
+    margin-bottom: var(--mb-2);
+}
+.timeline-item{
+    position: relative;
+    margin-bottom: var(--mb-2-5);
+    padding-left: 3rem;
+}
+
+.timeline-item:last-child{
+    margin-bottom: 0;
+}
+
+.timeline-item::before{
+    content: '';
+    width: 1px;
+    position: absolute;
+    background-color: var(--skin-color);
+    left: .48rem;
+    top: 0;
+    height: 100%;
+    
+}
+
+.circle-dot{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: 2px solid var(--skin-color);
+    background-color: var(--skin-color);
+    transition: .3s;
+}
+
+.timeline-item:hover .circle-dot{
+    background-color: var(--body-color);
+}
+
+.timeline-title{
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-0-25);
+}
+
+.timeline-text{
+    font-size: var(--smaller-font-size);
+    margin-bottom: var(--mb-1);
+}
+
+.timeline-date{
+    color: var(--skin-color);
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+    font-size: var(--small-font-size);
+}
+
+
+/*===== Skills Section =====*/
+
+
+/*===== Work Section =====*/
+
+
+/* Active Item Work */
+
+
+/* Portfolio Popup */
+
+
+/*===== Services Section =====*/
+
+
+/* Active Modal*/
+
+
+/*===== Testimonial Section =====*/
+
+
+/* Swiper Class */
+
+
+/*===== Contact Section =====*/
+
+
+/*=============== FOOTER ===============*/
+
+
+/*=============== SCROLL UP ===============*/
+
+
+/* Show Scroll Up*/
+
+
+/*=============== SCROLL BAR ===============*/
+
+
+/*========== BREAKPOINTS ==========*/
+/* For Large Devices */
+@media screen and (max-width: 1408px) {}
+
+@media screen and (max-width: 1216px) {}
+
+@media screen and (max-width: 1024px) {}
+
+/* For Medium Devices */
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 576px) {}
+
+/* For Small Devices */
+@media screen and (max-width: 350px) {}
